@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMAR & BORA — Detroit / Acid / Underground</title>
+<meta name="description" content="OMAR & BORA. İki deck, iki bilinç, tek frekans. Detroit tekno, acid, underground 80s-90s. İstanbul.">
+<meta property="og:title" content="OMAR & BORA">
+<meta property="og:description" content="Detroit / Acid / Underground. İstanbul.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0a'/%3E%3Crect x='6' y='14' width='8' height='4' fill='%23ff2e1f'/%3E%3Crect x='18' y='14' width='8' height='4' fill='%23f5f1e8'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-elev: #131211;
+    --ink: #f5f1e8;
+    --ink-dim: #8a8680;
+    --ink-faint: #3a3733;
+    --accent: #ff2e1f;
+    --accent-warm: #ffb800;
+    --shadow-color: 255, 46, 31;
+
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 48px;
+    --space-2xl: 80px;
+    --space-3xl: 120px;
+
+    --font-display: 'Syne', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    --font-serif: 'DM Serif Display', serif;
+    --font-body: 'Work Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(255, 46, 31, 0.06), transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(255, 184, 0, 0.04), transparent 50%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  /* ============= NAV ============= */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: var(--space-md) var(--space-xl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(12px);
+    background: rgba(10, 10, 10, 0.6);
+    border-bottom: 1px solid var(--ink-faint);
+    box-shadow:
+      0 1px 0 rgba(255, 46, 31, 0.04),
+      0 4px 16px rgba(0, 0, 0, 0.4),
+      0 16px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: var(--space-lg);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  .nav-links a {
+    color: var(--ink-dim);
+    text-decoration: none;
+    transition: color 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 4px;
+  }
+  .nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .nav-links a:hover::before { width: 100%; }
+
+  .nav-hamburger { display: none; }
+  .nav-mobile { display: none; }
+
+  @media (max-width: 768px) {
+    .nav-hamburger { display: flex; }
+    .nav-mobile { display: flex; }
+  }
+
+  /* ============= HERO ============= */
+  .hero {
+    min-height: 100vh;
+    padding: 72px var(--space-xl) var(--space-2xl);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-dim);
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+  .hero-meta span::before {
+    content: '◦ ';
+    color: var(--accent);
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 12vw, 180px);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    align-self: center;
+    position: relative;
+  }
+  .hero-title .l1 { display: block; }
+  .hero-title .amp {
+    color: var(--accent);
+    display: inline-block;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    transform: translateY(-0.05em);
+  }
+  .hero-title .l2 {
+    display: block;
+    text-align: right;
+  }
+
+  .hero-tag {
+    margin-top: var(--space-2xl);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-xl);
+    align-items: end;
+  }
+
+  /* JS-driven entrance — elements start hidden only when .hero-animate is set */
+  .hero-animate .hero-meta,
+  .hero-animate .hero-title .l1,
+  .hero-animate .hero-title .l2,
+  .hero-animate .hero-tag {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 800ms cubic-bezier(0.34, 1.56, 0.64, 1),
+                transform 800ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .hero-animate.in .hero-meta   { opacity: 1; transform: translateY(0); transition-delay: 100ms; }
+  .hero-animate.in .hero-title .l1 { opacity: 1; transform: translateY(0); transition-delay: 280ms; }
+  .hero-animate.in .hero-title .l2 { opacity: 1; transform: translateY(0); transition-delay: 500ms; }
+  .hero-animate.in .hero-tag    { opacity: 1; transform: translateY(0); transition-delay: 720ms; }
+  .hero-tag p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(18px, 2.2vw, 28px);
+    line-height: 1.4;
+    color: var(--ink);
+    max-width: 520px;
+  }
+  .hero-tag p span { color: var(--accent); font-style: normal; font-family: var(--font-mono); font-size: 0.65em; letter-spacing: 0.12em; }
+
+  .hero-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-sm);
+  }
+  .hero-cta-arrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .hero-cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--ink);
+    color: var(--bg);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1),
+                background 200ms ease,
+                color 200ms ease;
+  }
+  .hero-cta a:hover {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .hero-cta a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .hero-cta a:active { transform: translateY(0); }
+
+  /* Marquee strip */
+  .marquee {
+    border-top: 1px solid var(--ink-faint);
+    border-bottom: 1px solid var(--ink-faint);
+    padding: var(--space-md) 0;
+    overflow: hidden;
+    white-space: nowrap;
+    background: var(--bg-elev);
+  }
+  .marquee-track {
+    display: inline-block;
+    animation: scroll 40s linear infinite;
+    font-family: var(--font-display);
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+  }
+  .marquee-track span { color: var(--accent); margin: 0 var(--space-md); }
+  .marquee-track strong { color: var(--ink); font-weight: 400; }
+
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ============= MANIFESTO ============= */
+  .manifesto {
+    padding: var(--space-3xl) var(--space-xl);
+    border-bottom: 1px solid var(--ink-faint);
+    position: relative;
+    overflow: hidden;
+  }
+  .manifesto-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-2xl);
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+  }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  .manifesto-pull {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(36px, 5.5vw, 80px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    max-width: 900px;
+    margin-bottom: var(--space-2xl);
+  }
+  .manifesto-pull em {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .manifesto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--ink-faint);
+  }
+  .manifesto-line {
+    padding: var(--space-lg) var(--space-lg) var(--space-lg) 0;
+    border-right: 1px solid var(--ink-faint);
+  }
+  .manifesto-line:last-child { border-right: none; }
+  .manifesto-line .ml-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    margin-bottom: var(--space-sm);
+  }
+  .manifesto-line .ml-text {
+    font-family: var(--font-display);
+    font-size: clamp(16px, 1.8vw, 22px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .manifesto-line .ml-sub {
+    display: block;
+    margin-top: var(--space-sm);
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--ink-dim);
+  }
+
+  .manifesto-sig {
+    margin-top: var(--space-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .manifesto-sig::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* ============= SOUND ============= */
+  .sound {
+    padding: var(--space-3xl) var(--space-xl);
+    border-bottom: 1px solid var(--ink-faint);
+  }
+  .sound-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+    align-items: end;
+  }
+  .sound-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 7vw, 96px);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+  .sound-header p {
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-dim);
+    max-width: 480px;
+    justify-self: end;
+  }
+
+  .sound-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--ink-faint);
+    border: 1px solid var(--ink-faint);
+  }
+  .sound-cell {
+    background: var(--bg);
+    padding: var(--space-xl) var(--space-lg);
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background 250ms ease,
+                box-shadow 300ms cubic-bezier(0.34, 1.56, 0.64, 1),
+                transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .sound-cell:hover {
+    background: var(--bg-elev);
+    transform: translateY(-2px);
+    box-shadow:
+      0 2px 4px rgba(var(--shadow-color), 0.06),
+      0 8px 16px rgba(var(--shadow-color), 0.08),
+      0 24px 40px rgba(var(--shadow-color), 0.10);
+  }
+  .sound-cell::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--accent);
+    transition: width 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .sound-cell:hover::before { width: 100%; }
+
+  .sound-cell .num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+  .sound-cell .name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  .sound-cell .desc {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--ink-dim);
+    line-height: 1.6;
+  }
+
+  /* ============= DJ DUO ============= */
+  .djs {
+    padding: var(--space-3xl) var(--space-xl);
+    border-bottom: 1px solid var(--ink-faint);
+    position: relative;
+  }
+  .djs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: var(--space-xl);
+    border: 1px solid var(--ink-faint);
+  }
+  .dj-card {
+    padding: var(--space-2xl) var(--space-xl);
+    border-right: 1px solid var(--ink-faint);
+    position: relative;
+    transition: background 300ms ease,
+                box-shadow 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .dj-card:last-child { border-right: none; }
+  .dj-card:hover {
+    background: var(--bg-elev);
+    box-shadow:
+      inset 0 0 60px rgba(var(--shadow-color), 0.04),
+      0 4px 8px rgba(0, 0, 0, 0.3),
+      0 16px 32px rgba(var(--shadow-color), 0.06),
+      0 40px 80px rgba(0, 0, 0, 0.2);
+  }
+
+  .dj-card-top {
+    display: grid;
+    grid-template-columns: 156px 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+    margin-bottom: var(--space-lg);
+  }
+  .dj-photo {
+    width: 156px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+    background: var(--bg-elev);
+  }
+  .dj-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: grayscale(100%) contrast(1.1);
+    transition: filter 500ms ease, transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .dj-card:hover .dj-photo img {
+    filter: grayscale(60%) contrast(1.1);
+    transform: scale(1.04);
+  }
+  .dj-card:nth-child(2) .dj-photo img {
+    filter: grayscale(100%) contrast(1.1) sepia(20%);
+  }
+  .dj-card:nth-child(2):hover .dj-photo img {
+    filter: grayscale(40%) contrast(1.1) sepia(10%);
+  }
+
+  .dj-name {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 8vw, 112px);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-md);
+  }
+  .dj-card:nth-child(1) .dj-name {
+    color: var(--ink);
+  }
+  .dj-card:nth-child(2) .dj-name {
+    color: var(--accent);
+  }
+  .dj-role {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-bottom: var(--space-lg);
+  }
+  .dj-bio {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-dim);
+    margin-bottom: var(--space-lg);
+    max-width: 420px;
+  }
+  .dj-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+  .dj-tag {
+    padding: var(--space-xs) 10px;
+    border: 1px solid var(--ink-faint);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    transition: color 200ms ease,
+                border-color 200ms ease,
+                transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: default;
+  }
+  .dj-tag:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  /* ============= DATES ============= */
+  .dates {
+    padding: var(--space-3xl) var(--space-xl);
+    border-bottom: 1px solid var(--ink-faint);
+  }
+  .dates-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: var(--space-2xl);
+  }
+  .dates-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 7vw, 96px);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+  .dates-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: right;
+  }
+
+  .date-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr auto;
+    gap: var(--space-lg);
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--ink-faint);
+    align-items: center;
+    transition: padding-left 300ms cubic-bezier(0.34, 1.56, 0.64, 1),
+                background 250ms ease;
+    position: relative;
+  }
+  .date-row::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -1px;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .date-row:hover {
+    padding-left: var(--space-md);
+    background: rgba(255, 46, 31, 0.02);
+  }
+  .date-row:hover::after { width: 100%; }
+  .date-row .date {
+    font-family: var(--font-display);
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .date-row .date small {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--ink-dim);
+    margin-top: 4px;
+    font-weight: 400;
+  }
+  .date-row .venue {
+    font-family: var(--font-display);
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  .date-row .city {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .date-row .status {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border: 1px solid var(--ink-faint);
+  }
+  .date-row .status.tba {
+    color: var(--ink-dim);
+  }
+  .date-row .status.live {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* ============= CONTACT / CTA ============= */
+  .contact {
+    padding: var(--space-3xl) var(--space-xl);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255, 46, 31, 0.12), transparent),
+      radial-gradient(ellipse 40% 40% at 20% 50%, rgba(255, 184, 0, 0.04), transparent),
+      radial-gradient(ellipse 60% 80% at 80% 0%, rgba(255, 46, 31, 0.05), transparent),
+      var(--bg);
+  }
+  .contact::before {
+    content: 'BOOKING';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: clamp(80px, 20vw, 280px);
+    letter-spacing: -0.04em;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 46, 31, 0.06);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+  .contact > * { position: relative; z-index: 1; }
+  .contact-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: var(--space-lg);
+  }
+  .contact h2 {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 7vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-xl);
+  }
+  .contact h2 em {
+    color: var(--accent);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .contact-mail {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 3vw, 36px);
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 6px;
+    transition: color 200ms ease;
+  }
+  .contact-mail:hover { color: var(--accent); }
+  .contact-mail:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+
+  /* ============= FOOTER ============= */
+  footer {
+    padding: var(--space-xl);
+    border-top: 1px solid var(--ink-faint);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+  .footer-mark {
+    font-family: var(--font-display);
+    font-size: 14px;
+    letter-spacing: 0.05em;
+  }
+  .footer-mark span { color: var(--accent); }
+
+  .footer-social {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+  }
+  .footer-social a {
+    color: var(--ink-dim);
+    transition: color 200ms ease, transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px; height: 36px;
+    border: 1px solid var(--ink-faint);
+  }
+  .footer-social a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .footer-social a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .footer-copy {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    text-align: right;
+  }
+
+  /* ============= ANIMATIONS ============= */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 700ms ease, transform 700ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ============= RESPONSIVE ============= */
+  @media (max-width: 1024px) {
+    nav { padding: var(--space-md) var(--space-lg); }
+    .hero, .manifesto, .sound, .djs, .dates, .contact { padding-left: var(--space-lg); padding-right: var(--space-lg); }
+    .sound-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      padding: var(--space-sm) var(--space-md);
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-links { display: none; }
+    .nav-hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: var(--space-xs);
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px; height: 1.5px;
+      background: var(--ink);
+      transition: opacity 200ms ease, transform 200ms ease;
+    }
+    .nav-mobile {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,10,10,0.97);
+      z-index: 99;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-xl);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms ease;
+    }
+    .nav-mobile.open { opacity: 1; pointer-events: all; }
+    .nav-mobile a {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 10vw, 48px);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 200ms ease;
+    }
+    .nav-mobile a:hover { color: var(--accent); }
+    .nav-mobile-close {
+      position: absolute;
+      top: var(--space-md); right: var(--space-md);
+      background: none; border: none;
+      color: var(--ink-dim);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      cursor: pointer;
+      padding: var(--space-sm);
+    }
+
+    .hero { padding: 64px var(--space-md) var(--space-xl); }
+    .hero-meta { flex-direction: column; gap: var(--space-xs); margin-top: var(--space-md); margin-bottom: var(--space-lg); font-size: 10px; }
+    .hero-tag { grid-template-columns: 1fr; gap: var(--space-lg); }
+    .hero-tag p { font-size: 16px; }
+    .hero-cta { align-items: flex-start; }
+
+    .manifesto { padding: 64px var(--space-md); }
+    .manifesto-pull { font-size: clamp(28px, 8vw, 44px); margin-bottom: var(--space-xl); }
+    .manifesto-grid { grid-template-columns: 1fr; }
+    .manifesto-line { border-right: none; border-bottom: 1px solid var(--ink-faint); padding: var(--space-lg) 0; }
+    .manifesto-line:last-child { border-bottom: none; }
+    .manifesto-line .ml-text { font-size: 18px; }
+
+    .sound { padding: 64px var(--space-md); }
+    .sound-header { grid-template-columns: 1fr; gap: var(--space-md); margin-bottom: var(--space-xl); }
+    .sound-header p { justify-self: start; font-size: 15px; }
+    .sound-grid { grid-template-columns: 1fr 1fr; }
+    .sound-cell { min-height: 0; padding: var(--space-lg) var(--space-md); }
+    .sound-cell .name { font-size: 17px; line-height: 1.1; }
+    .sound-cell .desc { font-size: 12px; margin-top: var(--space-sm); }
+
+    .djs { padding: 64px var(--space-md); }
+    .djs-grid { grid-template-columns: 1fr; }
+    .dj-card { border-right: none; border-bottom: 1px solid var(--ink-faint); padding: var(--space-xl) 0; }
+    .dj-card:last-child { border-bottom: none; }
+    .dj-name { font-size: clamp(48px, 14vw, 80px); }
+
+    .dates { padding: 64px var(--space-md); }
+    .dates-header { flex-direction: column; align-items: flex-start; gap: var(--space-sm); margin-bottom: var(--space-xl); }
+    .date-row {
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto auto;
+      gap: var(--space-xs) var(--space-md);
+      padding: var(--space-md) 0;
+      align-items: start;
+    }
+    .date-row .date { font-size: 22px; grid-row: 1 / 3; }
+    .date-row .venue { font-size: 16px; align-self: end; }
+    .date-row .city { font-size: 11px; }
+    .date-row .status { grid-column: 1 / -1; justify-self: start; font-size: 9px; padding: 4px 10px; }
+
+    .contact { padding: 64px var(--space-md); }
+    .contact::before { font-size: clamp(60px, 22vw, 120px); }
+
+    footer { grid-template-columns: 1fr; text-align: center; gap: var(--space-md); padding: var(--space-xl) var(--space-md); }
+    .footer-copy { text-align: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">OMAR<span> & </span>BORA</a>
+  <div class="nav-links">
+    <a href="#manifesto">manifesto</a>
+    <a href="#sound">sound</a>
+    <a href="#djs">duo</a>
+    <a href="#dates">tarihler</a>
+    <a href="#contact">iletişim</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Menüyü aç" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navClose">✕ KAPAT</button>
+  <a href="#manifesto" class="nav-mobile-link">Manifesto</a>
+  <a href="#sound" class="nav-mobile-link">Sound</a>
+  <a href="#djs" class="nav-mobile-link">Duo</a>
+  <a href="#dates" class="nav-mobile-link">Tarihler</a>
+  <a href="#contact" class="nav-mobile-link">İletişim</a>
+</div>
+
+<section class="hero">
+  <div class="hero-meta">
+    <span>İSTANBUL / TR / 41.0082°N</span>
+    <span>EST. 2026</span>
+    <span>UNDERGROUND TRANSMISSION</span>
+  </div>
+
+  <h1 class="hero-title">
+    <span class="l1">OMAR</span>
+    <span class="l2"><span class="amp">&amp;</span> BORA</span>
+  </h1>
+
+  <div class="hero-tag">
+    <p><span>// İKİ BİLİNÇ, TEK FREKANS</span><br>
+    Detroit'in fabrika sesi, acid'in sarmal aklı ve 80'lerin ham makinesi; iki deck üzerinde birleşiyor.</p>
+    <div class="hero-cta">
+      <span class="hero-cta-arrow">↓ KAYIT</span>
+      <a href="#dates">Sahne Tarihleri</a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <strong>DETROIT TECHNO</strong> <span>×</span> <strong>ACID</strong> <span>×</span> <strong>UNDERGROUND 80s/90s</strong> <span>×</span> <strong>RAW MACHINE</strong> <span>×</span> <strong>HYBRID LIVE</strong> <span>×</span>
+    <strong>DETROIT TECHNO</strong> <span>×</span> <strong>ACID</strong> <span>×</span> <strong>UNDERGROUND 80s/90s</strong> <span>×</span> <strong>RAW MACHINE</strong> <span>×</span> <strong>HYBRID LIVE</strong> <span>×</span>
+  </div>
+</div>
+
+<section class="manifesto reveal" id="manifesto">
+  <div class="manifesto-top">
+    <span class="section-num">01 / MANIFESTO</span>
+    <span class="section-label">İstanbul — 2026</span>
+  </div>
+
+  <p class="manifesto-pull">
+    Müziğin saf haliyle kurulan<br>
+    <em>teknik bir diyalog.</em>
+  </p>
+
+  <div class="manifesto-grid">
+    <div class="manifesto-line">
+      <div class="ml-num">/ 001</div>
+      <div class="ml-text">Mekanik<br>bir köprü.</div>
+      <span class="ml-sub">80'lerin karanlık kulüplerinden 90'ların rave mirasına uzanan doğrudan bir hat.</span>
+    </div>
+    <div class="manifesto-line">
+      <div class="ml-num">/ 002</div>
+      <div class="ml-text">Kabin:<br>çarpışma alanı.</div>
+      <span class="ml-sub">Bir tarafta titizlikle seçilmiş arşiv, diğer tarafta sesin yapısını değiştiren modüler müdahaleler. Setler o anın frekansına göre inşa edilir.</span>
+    </div>
+    <div class="manifesto-line">
+      <div class="ml-num">/ 003</div>
+      <div class="ml-text">Ham.<br>Doğrudan.<br>Şimdi.</div>
+      <span class="ml-sub">İki farklı perspektif, tek bir ritmik bütünlük. Gerçek underground böyle görünür.</span>
+    </div>
+  </div>
+
+  <div class="manifesto-sig">Underground only — İstanbul / TR — Booking açık</div>
+</section>
+
+<section class="sound reveal" id="sound">
+  <div class="sound-header">
+    <h2>Sound<br>kaynakları</h2>
+    <p>Dört temel damar. Hiçbiri saf değil — geçişler, çakışmalar, beklenmedik birleşimler setin omurgasını oluşturuyor.</p>
+  </div>
+
+  <div class="sound-grid">
+    <div class="sound-cell">
+      <div>
+        <div class="num">/ 01</div>
+      </div>
+      <div>
+        <div class="name">Detroit<br>Tech</div>
+        <div class="desc" style="margin-top: var(--space-md);">Saf, ham, fabrika sesi. Underground Resistance, Robert Hood, Jeff Mills ekseni.</div>
+      </div>
+    </div>
+
+    <div class="sound-cell">
+      <div>
+        <div class="num">/ 02</div>
+      </div>
+      <div>
+        <div class="name">Acid<br>Tech</div>
+        <div class="desc" style="margin-top: var(--space-md);">303'ün asit dansı. Squelching, hipnotik, Chicago kökü, modern keskinlik.</div>
+      </div>
+    </div>
+
+    <div class="sound-cell">
+      <div>
+        <div class="num">/ 03</div>
+      </div>
+      <div>
+        <div class="name">80s/90s<br>Underground</div>
+        <div class="desc" style="margin-top: var(--space-md);">EBM, industrial, early techno. Makine müziğinin doğum sesi.</div>
+      </div>
+    </div>
+
+    <div class="sound-cell">
+      <div>
+        <div class="num">/ 04</div>
+      </div>
+      <div>
+        <div class="name">Raw<br>Tekno</div>
+        <div class="desc" style="margin-top: var(--space-md);">Saf, dipsiz, tek katmanlı. Kick, hi-hat, atmosfer — başka hiçbir şey.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="djs reveal" id="djs">
+  <div class="section-num">03 / DUO</div>
+  <h2 style="font-family: var(--font-display); font-size: clamp(40px, 7vw, 96px); line-height: 0.9; letter-spacing: -0.03em; text-transform: uppercase;">İkili</h2>
+
+  <div class="djs-grid">
+    <div class="dj-card">
+      <div class="dj-card-top">
+        <div class="dj-photo">
+          <img src="ımages/omar.jpg" alt="Omar — Deck A">
+        </div>
+        <div>
+          <div class="dj-name">OMAR</div>
+          <div class="dj-role">/ DECK A</div>
+        </div>
+      </div>
+      <p class="dj-bio">İstanbul merkezli vinyl arşivcisi. Vinyl Transit'in kurucusu. Underground arşivinde yıllardır biriken kayıtlar bu projeye akıyor.</p>
+      <div class="dj-tags">
+        <span class="dj-tag">Rominimal</span>
+        <span class="dj-tag">Dub House</span>
+        <span class="dj-tag">Detroit</span>
+      </div>
+    </div>
+
+    <div class="dj-card">
+      <div class="dj-card-top">
+        <div class="dj-photo">
+          <img src="ımages/bora.jpg" alt="Bora — Deck B">
+        </div>
+        <div>
+          <div class="dj-name">BORA</div>
+          <div class="dj-role">/ DECK B</div>
+        </div>
+      </div>
+      <p class="dj-bio">Endüstriyel sound mühendisi yaklaşımı. Ableton tarafının iskeletini kuran. Sahnedeki canlı manipülasyonun arkasındaki el.</p>
+      <div class="dj-tags">
+        <span class="dj-tag">Acid</span>
+        <span class="dj-tag">Industrial</span>
+        <span class="dj-tag">Berlin</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dates reveal" id="dates">
+  <div class="dates-header">
+    <h2>Sahne<br>tarihleri</h2>
+    <div class="dates-meta">
+      04 / TAKVIM<br>
+      <span style="color: var(--accent);">2026 — EARLY DATES</span>
+    </div>
+  </div>
+
+  <div class="date-row">
+    <div class="date">TBA<small>SOON</small></div>
+    <div class="venue">Açılış Gecesi</div>
+    <div class="city">İstanbul, TR</div>
+    <div class="status tba">Yakında</div>
+  </div>
+
+  <div class="date-row">
+    <div class="date">TBA<small>SUMMER</small></div>
+    <div class="venue">Yaz Sahneleri</div>
+    <div class="city">İstanbul, TR</div>
+    <div class="status tba">Hazırlık</div>
+  </div>
+
+  <div class="date-row">
+    <div class="date">—<small>BOOKING</small></div>
+    <div class="venue">Booking Açık</div>
+    <div class="city">Avrupa / TR</div>
+    <div class="status live">Aktif</div>
+  </div>
+</section>
+
+<section class="contact reveal" id="contact">
+  <div class="contact-eyebrow">/ 05 — TRANSMISSION</div>
+  <h2>İletişim<br><em>booking</em></h2>
+  <a href="mailto:bookings@omarbora.com" class="contact-mail">bookings@omarbora.com</a>
+</section>
+
+<footer>
+  <div class="footer-mark">OMAR<span> & </span>BORA</div>
+  <div class="footer-social">
+    <a href="#" aria-label="Instagram">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+    </a>
+    <a href="#" aria-label="Soundcloud">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 16v-4M5 18v-8M8 19v-10M11 20V8M14 20V6M17 20v-9M20 18v-4"/></svg>
+    </a>
+    <a href="#" aria-label="Mixcloud">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="14" r="3"/><circle cx="14" cy="14" r="3"/><path d="M14 14l4-6"/></svg>
+    </a>
+    <a href="#" aria-label="Email">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="1"/><path d="M2 7l10 7L22 7"/></svg>
+    </a>
+  </div>
+  <div class="footer-copy">© 2026 OMAR & BORA — İstanbul</div>
+</footer>
+
+<script>
+  // Hero entrance
+  const hero = document.querySelector('.hero');
+  hero.classList.add('hero-animate');
+  requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('in')));
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add('in');
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('navMobile');
+  const navClose = document.getElementById('navClose');
+  const mobileLinks = document.querySelectorAll('.nav-mobile-link');
+
+  hamburger.addEventListener('click', () => navMobile.classList.add('open'));
+  navClose.addEventListener('click', () => navMobile.classList.remove('open'));
+  mobileLinks.forEach(link => link.addEventListener('click', () => navMobile.classList.remove('open')));
+</script>
+
+</body>
+</html>
