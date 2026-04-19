@@ -120,6 +120,7 @@
   @media (max-width: 768px) {
     .nav-hamburger { display: flex; }
     .nav-mobile { display: flex; }
+    .nav-links { display: none; }
   }
 
   /* ============= HERO ============= */
@@ -775,6 +776,30 @@
     text-align: right;
   }
 
+  /* ============= NAV PLAY BUTTON ============= */
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .nav-play-btn {
+    width: 28px; height: 28px;
+    background: none;
+    border: 1px solid var(--ink-faint);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-dim);
+    transition: color 150ms ease, border-color 150ms ease, transform 150ms cubic-bezier(0.34,1.56,0.64,1);
+    flex-shrink: 0;
+  }
+  .nav-play-btn:hover { color: var(--accent); border-color: var(--accent); transform: scale(1.1); }
+  .nav-play-btn:active { transform: scale(0.95); }
+  .nav-play-btn.playing { color: var(--accent); border-color: var(--accent); }
+  .nav-play-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
   /* ============= ANIMATIONS ============= */
   .reveal {
     opacity: 0;
@@ -917,9 +942,16 @@
     <a href="#dates">tarihler</a>
     <a href="#contact">iletişim</a>
   </div>
-  <button class="nav-hamburger" aria-label="Menüyü aç" id="hamburger">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-right">
+    <audio id="audioEl" src="site-track/Aril Brikha - Kept Within.wav" preload="none" loop></audio>
+    <button id="playBtn" class="nav-play-btn" aria-label="Oynat / Durdur">
+      <svg id="iconPlay" width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+      <svg id="iconPause" width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+    </button>
+    <button class="nav-hamburger" aria-label="Menüyü aç" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <div class="nav-mobile" id="navMobile">
@@ -1153,6 +1185,26 @@
     });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+  // Audio Player
+  const audioEl = document.getElementById('audioEl');
+  const playBtn = document.getElementById('playBtn');
+  const iconPlay = document.getElementById('iconPlay');
+  const iconPause = document.getElementById('iconPause');
+
+  function setPlaying(val) {
+    iconPlay.style.display = val ? 'none' : '';
+    iconPause.style.display = val ? '' : 'none';
+    val ? playBtn.classList.add('playing') : playBtn.classList.remove('playing');
+  }
+
+  // Autoplay on load (browsers require user gesture fallback)
+  audioEl.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+
+  playBtn.addEventListener('click', () => {
+    if (audioEl.paused) { audioEl.play(); setPlaying(true); }
+    else { audioEl.pause(); setPlaying(false); }
+  });
 
   // Hamburger menu
   const hamburger = document.getElementById('hamburger');
